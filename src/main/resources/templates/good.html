@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>太帅了</title>
+</head>
+<body>
+    <h2 th:text="${key}"></h2><br>
+    <div th:inline="text">
+        <p>内敛1</p>
+        [[${key}]]
+    </div><br>
+
+    <div>
+        <p>测试值</p>
+        [[${key}]]
+    </div>
+
+
+    <div>
+        <p>内敛2</p>
+        <h1>[[${#session.getAttribute("url")}]]</h1>
+    </div><br>
+    <script>
+        alert("[[${#session.getAttribute('url')}]]")
+    </script>
+
+    <p th:text="${#session.getAttribute('url')}"></p>
+</body>
+</html>

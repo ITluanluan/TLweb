@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>成功</title>
+</head>
+<body>
+    <div th:include="base/header">
+
+    </div>
+    <table>
+        <tr>
+            <td>序号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>性别</td>
+            <td>生日</td>
+            <td>操作</td>
+            <td></td>
+        </tr>
+        <tr th:each="student:${studentList}">
+            <td>[[${studentStat.count}]]</td>
+            <td>[[${student.name}]]</td>
+            <td>[[${student.age}]]</td>
+            <td>[[${student.sex}]]</td>
+            <td>[[${#dates.format(student.bithday,'yyyy-MM-dd')}]]</td>
+            <td><a th:href="@{|/springboot/deleteStudent/${student.id}|}">删除</a></td>
+            <td><a th:href="@{|/springboot/toUpdateStudent/${student.id}|}">更新</a></td>
+        </tr>
+        <tr th:each="student:${studentList}">
+            <td th:text="${studentStat.count}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.sex}"></td>
+            <td th:text="${#dates.format(student.bithday,'yyyy-MM-dd')}"></td>
+            <td><a th:href="@{|/springboot/deleteStudent/${student.id}|}">删除</a></td>
+            <td><a th:href="@{|/springboot/toUpdateStudent/${student.id}|}">更新</a></td>
+        </tr>
+
+
+    </table>
+
+
+</body>
+</html>

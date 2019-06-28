@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+    <div th:include="base/header"></div>
+
+<form th:action="@{|/springboot/updateStudent|}" method="post">
+    <input name="id" type="hidden" th:value="${student.id}"><br>
+    姓名：<input name="name" th:value="${student.getName()}"><br>
+    年龄：<input name="age" th:value="${student.age}"><br>
+    性别：<input name="sex" type="radio" value="男" th:attr="checked=${student.sex=='男'?true:false}">男
+          <input name="sex" type="radio" value="女" th:attr="checked=${student.sex=='女'?true:false}">女<br>
+    生日：<input name="bithday" th:value="${#dates.format(student.bithday,'yyyy-MM-dd')}"><br>
+    <input type="submit" value="修改">
+</form>
+
+
+    <form action="/springboot/updateStudent" method="post">
+        <input name="id"  type="hidden" th:value="${student.id}"><br>
+        姓名：<input name="name" th:value="${student.name}"><br>
+        年龄：<input name="age" th:value="${student.age}"><br>
+        性别：<input name="sex" type="radio" value="男" th:checked="${student.sex=='男'?true:false}">男
+        <input name="sex" type="radio" value="女" th:checked="${student.sex=='女'?true:false}">女<br>
+        生日： <input name="bithday" th:value="${#dates.format(student.bithday,'yyyy-MM-dd')}"><br>
+        <input type="submit" value="修改">
+    </form>
+</body>
+</html>
